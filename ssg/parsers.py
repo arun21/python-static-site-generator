@@ -35,15 +35,17 @@ class ResourceParser(Parser):
     def parse(self, path, source, dest):
         self.copy(path, source, dest)
 
+
 class MarkdownParser(Parser):
     extensions = [".md", ".markdown"]
 
     def parse(self, path, source, dest):
         content = Content.load(self.read(path))
         html = markdown(content.body)
-        self.write(html,dest,html)
+        self.write(html, dest, html)
         sys.stdout.write("\x1b[1;32m{} converted to HTML. Metadata: {}\n".
                          format(path.name, content))
+
 
 class ReStructuredTextParser(Parser):
     extensions = [".rst"]
@@ -54,6 +56,3 @@ class ReStructuredTextParser(Parser):
         self.write(path, dest, html["html_body"])
         sys.stdout.write("\x1b[1;32m{} converted to HTML. Metadata: {}\n".
                          format(path.name, content))
-
-
-
