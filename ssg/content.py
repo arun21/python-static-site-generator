@@ -15,7 +15,7 @@ class Content(Mapping):
 
     def __init__(self, metadata, content):
         self.data = metadata
-        self.data = {"content": content}
+        self.data["content"] = content
 
     @property
     def body(self):
@@ -38,6 +38,7 @@ class Content(Mapping):
     def __len__(self):
         return len(self.data)
 
+    @classmethod
     def __repr(self):
         data = {}
         for k, v in self.data.items():
