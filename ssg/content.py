@@ -39,7 +39,7 @@ class Content(Mapping):
         return len(self.data)
 
     @classmethod
-    def __repr(self):
+    def __repr__(self):
         data = {}
         for k, v in self.data.items():
             if k != "content":
